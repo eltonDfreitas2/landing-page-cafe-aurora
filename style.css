@@ -47,7 +47,7 @@ section {
 
     display: flex;
     list-style: none;
-    gap: 1.88em;
+    gap: 1.88rem;
 }
 
 .menu__lista a {
@@ -64,7 +64,7 @@ section {
 
 .hero {
 
-    height: 40.63em;
+    height: 40.63rem;
 
     background:
         linear-gradient(rgba(75, 46, 46, .60), rgba(75, 46, 46, .60)),
@@ -84,17 +84,17 @@ section {
 }
 
 .hero_conteudo {
-    max: width 43.75em;
+    max: width 43.75rem;
 }
 
 .hero_titulo {
-    font: size 3.5em;
+    font: size 3.5rem;
     margin: bottom 1.25rem;
 }
 
 .hero_texto {
     font: size 1.38em;
-    margin: bottom 2.19em;
+    margin: bottom 2.19rem;
 }
 
 .botao {
@@ -121,18 +121,18 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 3.75em;
+    gap: 3.75rem;
 }
 
 .sobre-texto {
 
-    max: width 34.4em;
+    max: width 34.4rem;
 }
 
 .sobre h2 {
 
-    font: size 2.5em;
-    margin: bottom 1.25em;
+    font: size 2.5rem;
+    margin: bottom 1.25rem;
 }
 
 .imagem-sobre {
