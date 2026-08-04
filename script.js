@@ -1,68 +1,75 @@
-/*const nomeCafe = "pretinho";
-const anoFundacao = 2010;
-const anoAtua = 2026;
-const anosFundacao = anoAtual - anoFundacao;
-console.log(`Estamos em atuação á ${anosFundacao} anos`);
-console.log(typeof nomeCafe);
-console.log(typeof anoFundacao);
-console.log(typeof anoAtual);8*/
-
-
-const cidade = "São Paulo";
-let temperatura = 25;
-console.log(typeof cidade);
-console.log(typeof temperatura);
-
-console.log("cafe".toUpperCase());
-console.log("cafe aurora".length);
-
-const a = Boolean (0);
-const b = Boolean ("");
-const c = Boolean ("cafe");
-console.log(a, b, c);
-
 console.log("Café Aurora - script carregado!");
 
 const nomeCafe = "Café Aurora";
-
 const anoFundacao = 2020;
 const anoAtual = new Date().getFullYear();
 const anosDeCasa = anoAtual - anoFundacao;
 
-const preco1 = 7;
-const preco2 = 12;
-const preco3 = 8;
-const preco4 = 7;
-const media = (preco1 + preco2 + preco3 + preco4) / 4;
+const cardapio = [
+    { nome: "Espresso", preco: 7, categoria: "cafe", descricao: "Café curto e intenso, com crema aveludada." },
+    { nome: "Cappuccino", preco: 12, categoria: "cafe", descricao: "Espresso, leite vaporizado e espuma cremosa." },
+    { nome: "Pão na chapa", preco: 8, categoria: "comida", descricao: "Pão artesanal na manteiga." },
+    { nome: "Bolo do dia", preco: 10, categoria: "comida", descricao: "Fatia generosa feita na nossa cozinha." },
+    { nome: "Croissant", preco: 14, categoria: "comida", descricao: "Folhado amanteigado assado na hora." }
+];
 
-function formatarPreco(valor){
-    return `R$ ${valor.toFixed(2)}`;
+function formatarPreco(valor) {
+    return valor.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+    });
 }
 
-console.log(formatarPreco(7)); 
+const grade = document.querySelector(".cardapio__grade");
 
-console.log(formatarPreco(preco1));
-console.log(formatarPreco(preco2));
-console.log(formatarPreco(preco3));
-console.log(formatarPreco(preco4));
+function criarCard(item) {
+    const article = document.createElement("article");
+    article.classList.add("card");
 
-const cafeAberto= (hora) => hora >= 8 && hora< 19
+    const titulo = document.createElement("h3");
+    titulo.classList.add("card__titulo");
+    titulo.textContent = item.nome;
 
+    const descricao = document.createElement("p");
+    descricao.classList.add("card__descricao");
+    descricao.textContent = item.descricao;
+
+    const preco = document.createElement("span");
+    preco.classList.add("card__preco");
+    preco.textContent = formatarPreco(item.preco);
+
+    article.append(titulo, descricao, preco);
+    return article;
+}
+
+function renderizarCardapio(itens) {
+    if (grade) {
+        grade.innerHTML = "";
+        itens.forEach((item) => {
+            grade.append(criarCard(item));
+        });
+    }
+}
+
+renderizarCardapio(cardapio);
+
+const cafeAberto = (hora) => hora >= 8 && hora < 19;
 const horaAtual = new Date().getHours();
 const estaAberto = cafeAberto(horaAtual);
 
-console.log(estaAberto ? "O café está aberto." : "O café está fechado.");
-
-const botao= document.querySelector(".hero .botao");
-botao.textContent= estaAberto ? "Ver cadapio" : "voltamos as 8H"
-
-console.log(`${nomeCafe} está no ar há ${anosDeCasa} anos.`);
-console.log(`Preço médio: R$ ${media.toFixed(2)}`);
+const botao = document.querySelector(".hero .botao");
+if (botao) {
+    botao.textContent = estaAberto ? "Ver cardápio" : "Voltamos às 8h!";
+}
 
 const rodape = document.querySelector(".rodape p");
+if (rodape) {
+    rodape.textContent = `© ${anoAtual} ${nomeCafe}. ${anosDeCasa} anos de história. Todos os direitos reservados.`;
+}
 
-rodape.textContent =
-    `© ${anoAtual} ${nomeCafe}. ${anosDeCasa} 
-    anos de história. Todos os direitos reservados.`;
+botao.addEventListener("click",(event) => {
+const secaoCardapio = document.querySelector("#cardapio");
+event.preventDefault();
+secaoCardapio.scrollIntoView({behavior: "smooth"});
+});
 
-    
