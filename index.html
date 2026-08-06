@@ -1,30 +1,38 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Café Aurora | Cafeteria Artesanal</title>
-
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
-    <script src="index.js" defer></script>
-    
 </head>
-
 <body>
 
     <header class="cabecalho">
         <h2 class="logo">Café Aurora</h2>
-        <ul class="menu__lista">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#cardapio">Cardápio</a></li>
-            <li><a href="#contato">Contato</a></li>
-        </ul>
+
+        <!-- Botão do menu celular -->
+        <button class="menu-toggle" aria-label="Abrir menu">
+            <span class="barra"></span>
+            <span class="barra"></span>
+            <span class="barra"></span>
+        </button>
+
+        <!--menu principal -->
+        <nav class="menu__nav">
+            <ul class="menu__lista">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#cardapio">Cardápio</a></li>
+                <li><a href="#contato">Contato</a></li>
+                <li><input type="text" id="campo-texto" placeholder="Buscar no cardápio..."></li>
+            </ul>
         </nav>
     </header>
+
     <main>
+        <!-- SEÇÃO HERO -->
         <section id="inicio" class="hero">
             <div class="hero_conteudo">
                 <h1 class="hero_titulo">O melhor café artesanal do bairro</h1>
@@ -33,72 +41,59 @@
             </div>
         </section>
 
+        <!-- SEÇÃO SOBRE -->
         <section id="sobre" class="sobre">
             <div class="sobre_texto">
-                <h1 class="hero_titulo">Sobre nós</h1>
-                <p class="hero_texto">O Café Aurora oferece cafés especiais, pães artesanais e um ambiente acolhedor
-                    para você aproveitar bons momentos.</p>
+                <h2>Sobre nós</h2>
+                <p>O Café Aurora oferece cafés especiais, pães artesanais e um ambiente acolhedor para você aproveitar bons momentos.</p>
             </div>
-            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80" alt="Xicara de café"
-                class="imagem-sobre">
+            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80" alt="Pessoas brindando com xícaras de café" class="imagem-sobre">
         </section>
 
+        <!-- SEÇÃO CARDÁPIO -->
         <section id="cardapio">
-            <h2 class="titulo">Nosso cardapio</h2>
-
-            <div class="cards">
-
-                <article class="card">
-                    <h3>Espresso</h3>
-                    <p>Café curto e intenso, com crema aveludada.</p>
-                    <span>R$ 7,00</span>
-                </article>
-
-                <article class="card">
-                    <h3>Cappuccino</h3>
-                    <p>Espresso, leite vaporizado e espuma cremosa.</p>
-                    <span>R$ 12,00</span>
-                </article>
-
-                <article class="card">
-                    <h3>Pão na chapa</h3>
-                    <p>Pão artesanal na manteiga.</p>
-                    <span>R$ 8,00</span>
-                </article>
-
-                <article class="card">
-                    <h3>Bolo do dia</h3>
-                    <p>Fatia generosa feita na nossa cozinha.</p>
-                    <span>R$ 7,00</span>
-                </article>
+            <h2>Nosso Cardápio</h2>
+            
+            <div class="filtros">
+                <button class="btn-filtro" data-categoria="todos">Todos</button>
+                <button class="btn-filtro" data-categoria="cafe">Cafés</button>
+                <button class="btn-filtro" data-categoria="comida">Comidas</button>
             </div>
+
+            <!-- Grade interna que receberá os cards dinâmicos do JS -->
+            <div class="cardapio__grade"></div>
         </section>
 
+        <!-- SEÇÃO CONTATO -->
         <section id="contato" class="contato">
             <div class="contato-info">
-
                 <h2>Venha nos visitar</h2>
-
                 <p>Rua das Flores, 123 - Centro</p>
                 <p>Aberto de terça a domingo, das 8h às 19h</p>
                 <p>Telefone: (47) 99999-0000</p>
-
+                <br>
+                <a href="#" class="botao" style="margin: 0;">Reservar uma mesa</a>
             </div>
 
-            <a href="#" class="botao">
-                Reservar uma mesa
-            </a>
+            <!--pedido no exercício -->
+            <form id="meu-formulario">
+                <h3>Fale Conosco / Pedido</h3>
 
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" placeholder="Digite seu nome">
+
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" placeholder="Digite seu e-mail">
+
+                <button type="submit">Enviar</button>
+                <p id="mensagem-usuario"></p>
+            </form>
         </section>
-
-        <footer class="rodape">
-
-            <p></p>
-
-        </footer>
-
     </main>
-    
-</body>
 
+    <footer class="rodape">
+        <p></p>
+    </footer>
+
+</body>
 </html>

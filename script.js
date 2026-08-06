@@ -51,15 +51,89 @@ function renderizarCardapio(itens) {
     }
 }
 
-renderizarCardapio(cardapio);
+/* 1. INTERAÇÃO INTERNA: MENU MOBILE TOGGLE */
+const botaoMenu = document.querySelector(".menu-toggle");
+const menuNav = document.querySelector(".menu__nav");
 
+if (botaoMenu && menuNav) {
+    botaoMenu.addEventListener("click", function () {
+        botaoMenu.classList.toggle("ativo");
+        menuNav.classList.toggle("ativo");
+    });
+}
+
+/* 2. EXERCÍCIO: BOTÕES DE FILTRO*/
+const botoesFiltro = document.querySelectorAll(".btn-filtro");
+
+botoesFiltro.forEach((botao) => {
+    botao.addEventListener("click", function () {
+        const categoriaSelecionada = botao.getAttribute("data-categoria");
+
+        if (categoriaSelecionada === "todos") {
+            renderizarCardapio(cardapio);
+        } else {
+            const cardapioFiltrado = cardapio.filter((item) => {
+                return item.categoria === categoriaSelecionada;
+            });
+            renderizarCardapio(cardapioFiltrado);
+        }
+    });
+});
+
+/* 3. EXERCÍCIO: BARRA DE BUSCA EM TEMPO REAL*/
+const meuInput = document.querySelector("#campo-texto");
+
+if (meuInput) {
+    meuInput.addEventListener("input", function (event) {
+        const termoBusca = event.target.value.toLowerCase();
+        const itensFiltrados = cardapio.filter((item) => {
+            return item.nome.toLowerCase().includes(termoBusca);
+        });
+        renderizarCardapio(itensFiltrados);
+    });
+}
+
+/* 4. EXERCÍCIO: VALIDAÇÃO DE SUBMIT FORMULÁRIO*/
+const formulario = document.querySelector("#meu-formulario");
+const campoNome = document.querySelector("#nome");
+const campoEmail = document.querySelector("#email");
+const mensagemUsuario = document.querySelector("#mensagem-usuario");
+
+if (formulario) {
+    formulario.addEventListener("submit", function (event) {
+        event.preventDefault(); // Impede recarregamento de página
+
+        const nomeValido = campoNome.value.trim();
+        const emailValido = campoEmail.value.trim();
+
+        if (nomeValido === "" || emailValido === "") {
+            mensagemUsuario.style.color = "red";
+            mensagemUsuario.textContent = "Por favor, preencha todos os campos corretamente.";
+            return;
+        }
+
+        mensagemUsuario.style.color = "green";
+        mensagemUsuario.textContent = `Obrigado, ${nomeValido}! Seus dados foram enviados com sucesso.`;
+        formulario.reset();
+    });
+}
+
+/* 5. CONTROLE DE HORÁRIO E EVENTOS AUTOMÁTICO*/
 const cafeAberto = (hora) => hora >= 8 && hora < 19;
 const horaAtual = new Date().getHours();
 const estaAberto = cafeAberto(horaAtual);
 
-const botao = document.querySelector(".hero .botao");
-if (botao) {
-    botao.textContent = estaAberto ? "Ver cardápio" : "Voltamos às 8h!";
+const botaoHero = document.querySelector(".hero .botao");
+if (botaoHero) {
+    botaoHero.textContent = estaAberto ? "Ver cardápio" : "Voltamos às 8h!";
+
+    botaoHero.addEventListener("click", (event) => {
+        const secaoCardapio = document.querySelector("#cardapio");
+        if (secaoCardapio) {
+            event.preventDefault();
+            secaoCardapio.scrollIntoView({ behavior: "smooth" });
+        }
+    });
 }
 
 const rodape = document.querySelector(".rodape p");
@@ -67,9 +141,5 @@ if (rodape) {
     rodape.textContent = `© ${anoAtual} ${nomeCafe}. ${anosDeCasa} anos de história. Todos os direitos reservados.`;
 }
 
-botao.addEventListener("click",(event) => {
-const secaoCardapio = document.querySelector("#cardapio");
-event.preventDefault();
-secaoCardapio.scrollIntoView({behavior: "smooth"});
-});
-
+// Inicializa a renderização carregando todos os produtos na tela
+renderizarCardapio(cardapio);
