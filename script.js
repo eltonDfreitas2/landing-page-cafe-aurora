@@ -62,7 +62,7 @@ if (botaoMenu && menuNav) {
     });
 }
 
-/* 2. EXERCÍCIO: BOTÕES DE FILTRO*/
+/*BOTÕES DE FILTRO*/
 const botoesFiltro = document.querySelectorAll(".btn-filtro");
 
 botoesFiltro.forEach((botao) => {
@@ -80,20 +80,7 @@ botoesFiltro.forEach((botao) => {
     });
 });
 
-/* 3. EXERCÍCIO: BARRA DE BUSCA EM TEMPO REAL*/
-const meuInput = document.querySelector("#campo-texto");
-
-if (meuInput) {
-    meuInput.addEventListener("input", function (event) {
-        const termoBusca = event.target.value.toLowerCase();
-        const itensFiltrados = cardapio.filter((item) => {
-            return item.nome.toLowerCase().includes(termoBusca);
-        });
-        renderizarCardapio(itensFiltrados);
-    });
-}
-
-/* 4. EXERCÍCIO: VALIDAÇÃO DE SUBMIT FORMULÁRIO*/
+/*VALIDAÇÃO DE SUBMIT FORMULÁRIO*/
 const formulario = document.querySelector("#meu-formulario");
 const campoNome = document.querySelector("#nome");
 const campoEmail = document.querySelector("#email");
@@ -118,7 +105,7 @@ if (formulario) {
     });
 }
 
-/* 5. CONTROLE DE HORÁRIO E EVENTOS AUTOMÁTICO*/
+/* CONTROLE DE HORÁRIO E EVENTOS AUTOMÁTICO*/
 const cafeAberto = (hora) => hora >= 8 && hora < 19;
 const horaAtual = new Date().getHours();
 const estaAberto = cafeAberto(horaAtual);
