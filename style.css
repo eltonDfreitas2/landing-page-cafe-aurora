@@ -7,7 +7,6 @@
 }
 
 :root {
-
     --cafe-escuro: #4b2e2e;
     --creme: #f5ede1;
     --laranja: #d98e04;
@@ -25,15 +24,13 @@ section {
     padding: 5rem 5%;
 }
 
+/* CABEÇALHO E MENU */
 .cabecalho {
     background: var(--cafe-escuro);
-
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     padding: 1rem 10%;
-
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -44,10 +41,10 @@ section {
 }
 
 .menu__lista {
-
     display: flex;
     list-style: none;
     gap: 1.88rem;
+    align-items: center;
 }
 
 .menu__lista a {
@@ -55,50 +52,51 @@ section {
     color: var(--branco);
     font-weight: bold;
     transition: .3s;
-
 }
 
 .menu__lista a:hover {
     color: var(--laranja);
 }
 
+#campo-texto {
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+/* ==========================================================================
+   HERO E SOBRE
+   ========================================================================== */
 .hero {
-
     height: 40.63rem;
-
     background:
         linear-gradient(rgba(75, 46, 46, .60), rgba(75, 46, 46, .60)),
         url("https://images.unsplash.com/photo-1559496417-e7f25cb247f3?w=1200&q=80");
-
     background-size: cover;
     background-position: center;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     text-align: center;
-
     color: white;
-
 }
 
 .hero_conteudo {
-    max: width 43.75rem;
+    max-width: 43.75rem;
 }
 
 .hero_titulo {
-    font: size 3.5rem;
-    margin: bottom 1.25rem;
+    font-size: 3.5rem;
+    margin-bottom: 1.25rem;
 }
 
 .hero_texto {
-    font: size 1.38em;
-    margin: bottom 2.19rem;
+    font-size: 1.38em;
+    margin-bottom: 2.19rem;
 }
 
 .botao {
-
     display: inline-block;
     background: var(--laranja);
     color: white;
@@ -106,62 +104,58 @@ section {
     border-radius: 1.9rem;
     text-decoration: none;
     transition: .3s;
-    display: inline-block;
-    margin: 2rem;
-
+    margin-top: 1rem;
 }
 
 .botao:hover {
-
     background: #b97803;
 }
 
 .sobre {
-
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 3.75rem;
 }
 
-.sobre-texto {
-
-    max: width 34.4rem;
+.sobre_texto {
+    max-width: 34.4rem;
 }
 
 .sobre h2 {
-
-    font: size 2.5rem;
-    margin: bottom 1.25rem;
+    font-size: 2.5rem;
+    margin-bottom: 1.25rem;
 }
 
 .imagem-sobre {
-
     width: 100%;
     max-width: 500px;
     border-radius: 12px;
+}
 
+/* ==========================================================================
+   CARDÁPIO E CARDS DINÂMICOS
+   ========================================================================== */
+#cardapio {
+    background: var(--branco);
+    width: 100%;
+    padding: 5rem 5%;
 }
 
 #cardapio h2 {
-
     text-align: center;
     margin-bottom: 40px;
-
 }
 
-.cards {
-    background: var(--branco);
-    width: 100%;
-    padding: 6.5rem 0;
+.cardapio__grade {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 1.5rem;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 .card {
-
     width: 15rem;
     background: var(--creme);
     padding: 1.6rem;
@@ -169,13 +163,6 @@ section {
     text-align: center;
     box-shadow: 0 0.3rem 0.9rem rgba(0, 0, 0, .15);
     transition: .3s;
-
-}
-
-.titulo {
-    text-align: center;
-    margin: 1.9rem 0;
-
 }
 
 .card:hover {
@@ -186,13 +173,46 @@ section {
     margin-bottom: 0.9rem;
 }
 
+.card p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+
 .card span {
     display: block;
     margin-top: 0.9rem;
     color: var(--laranja);
     font-size: 1.4rem;
     font-weight: bold;
+}
 
+/* ==========================================================================
+   BOTÕES DE FILTRO E FORMULÁRIO
+   ========================================================================== */
+.filtros {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.btn-filtro {
+    background-color: var(--branco, #fff);
+    color: var(--laranja, #ff6600);
+    border: 2px solid var(--laranja, #ff6600);
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-filtro:hover {
+    background-color: var(--laranja, #ff6600);
+    color: var(--branco, #fff);
+    transform: translateY(-2px);
 }
 
 .contato {
@@ -211,6 +231,64 @@ section {
     margin-bottom: 0.62rem;
 }
 
+#meu-formulario {
+    width: 100%;
+    max-width: 450px;
+    padding: 2rem;
+    background-color: var(--creme);
+    border-radius: 0.75rem;
+    box-shadow: 0 0.3rem 0.9rem rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#meu-formulario h3 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+#meu-formulario label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #555;
+}
+
+#meu-formulario input {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    outline: none;
+}
+
+#meu-formulario input:focus {
+    border-color: var(--laranja);
+}
+
+#meu-formulario button[type="submit"] {
+    background-color: var(--laranja);
+    color: var(--branco);
+    border: none;
+    padding: 0.8rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#meu-formulario button[type="submit"]:hover {
+    background-color: #b97803;
+}
+
+#mensagem-usuario {
+    text-align: center;
+    font-size: 0.95rem;
+    min-height: 20px;
+    font-weight: bold;
+}
+
 .rodape {
     background: var(--cafe-escuro);
     color: var(--creme);
@@ -218,27 +296,74 @@ section {
     padding: 1.5rem;
 }
 
-@media (max-width: 768px) {
+/* ==========================================================================
+   RESPONSIVIDADE E MENU MOBILE
+   ========================================================================== */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1010;
+}
 
+.menu-toggle .barra {
+    width: 25px;
+    height: 3px;
+    background-color: var(--creme);
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
     section {
         padding: 3rem 5%;
     }
 
+    .menu-toggle {
+        display: flex;
+    }
+
     .cabecalho {
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1rem;
+        position: relative;
+        padding: 1rem 5%;
+    }
+
+    .menu__nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--cafe-escuro);
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        z-index: 999;
+    }
+
+    .menu__nav.ativo {
+        display: block;
     }
 
     .menu__lista {
         flex-direction: column;
         align-items: center;
-        gap: 1rem;
+        gap: 1.5rem;
+        padding: 2rem 0;
+    }
+
+    .menu-toggle.ativo .barra:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .menu-toggle.ativo .barra:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.ativo .barra:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
     }
 
     .hero {
         height: 60vh;
-        padding: 1rem;
     }
 
     .hero_titulo {
@@ -249,33 +374,27 @@ section {
         font-size: 1rem;
     }
 
-    .sobre {
+    .sobre, .contato {
         flex-direction: column;
         text-align: center;
+    }
+
+    #meu-formulario {
+        max-width: 100%;
     }
 
     .imagem-sobre {
         max-width: 100%;
     }
 
-    .cards {
+    .cardapio__grade {
         flex-direction: column;
         align-items: center;
     }
 
     .card {
-        width: 90%;
-        max-width: 320px;
-    }
-
-    .contato {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .contato iframe {
         width: 100%;
-        height: 300px;
+        max-width: 320px;
     }
 
     .contato-info h2,
